@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue Basics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Vue Behind The Scenes</h1>
+  </header>
+  <section id="app">
+    <h2>How Vue Works</h2>
+    <!-- 
+    <input type="text" @input="saveInput"> 
+    ini adalah contoh input yang value nya di tangkap dan di ambil oleh event handle input dan di trigger oleh event onclick. 
+    -->
+    <!-- 
+    <input type="text" v-model="currentUserInput">
+    ini adalah contoh input value yang value input nya di ambil dan di manage oleh v-model dimana jika terjadi
+    perubahan variable yang di bind maka secara otomatis akan di update oleh v-model ini. 
+    -->
+    <input type="text" ref="userText">
+    <!--  
+       di atas ini adalah contoh input value yang di ambil oleh ref.
+       refs adalah fitur dari vuejs untuk retrieve value dari dom element.
+       pada contoh di atas ref=userText, jika kita console.dir(this.$refs.userText) maka akan terlihat semua dom yang ada
+       pada element tersebut dan semua dom pada element tersebut bisa kita akses. untuk mengakses nya silahkan di lihat pada app.js
+     -->
+    <button @click="setText">Set Text</button>
+    <p>{{ message }}</p>
+  </section>
+  <section id="app2">
+    <h2>Vue App 2</h2>
+    <p>{{ text }}</p>
+  </section>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue Basics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Vue Course Goals</h1>
+  </header>
+  <section id="user-goals">
+    <h2>My course goals</h2>
+    <input type="text" v-model="enteredValueGoal" />
+    <button @click="addGoal">Add Goal</button>
+    <!-- 
+      perbedaan antara v-if dan v-show adalah v-if dia akan langsung berinteraksi dengan dom (insert, delete, update new dom)
+      sedangkan v-show hanya memberikan efect css untuk menghilangkan atau memunculkan bagian yang di render. tapi sisi bagusnya
+      karena tidak ada penambahan atau pengurangan pada DOM maka performance nya lebih baik, untuk secara fungsi bisa di liat berdasarkan case yang ada
+     -->
+    <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+    <ul>
+      <!-- 
+        contoh data : [{'name':adi , 'age': 27, 'hobi':badminton}]
+        v-for="(value data, key obj, index) in data" :key="index" . dari syntaks di samping ini value data adalah value yang akan 
+        di keluar dari array data , ex -> adi , 27, badminton
+        key obj nya adalah key value dari data array tersebut, ex -> name,age,hobi.active
+        index adalah no yang di generate oleh vue berdasarkan banyak nya list array dan no ini akan secara unik d generate
+        :key -> dia akan meminta salah satu value yang unik, oleh karena itu bisa di isikan dengan index, value.id
+        contoh lain penggunaan v-for adalah -> v-for="num in 10" , {{num}} . maka dia akan mencetak num sebanyak 10 kali.
+
+
+       -->
+      <li v-for="(goal, index) in goals" :key="index" @click="removeList(index)">{{goal}} : index ke {{index}}</li>
+    </ul>
+  </section>
+</body>
+
+</html>
